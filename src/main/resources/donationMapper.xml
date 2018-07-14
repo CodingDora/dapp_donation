@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="kr.block.codingdora.mapper.DonationMapper">
+	<select id="selectAll" resultType="DonationVO">
+		select * from table_donation
+	</select>
+	
+		<insert id="insertPost" parameterType="DonationVO">
+		insert into table_donation(
+			d_num
+			,userid
+			,d_name
+			,d_content
+			,d_introduce
+			,d_plan
+			,d_target
+			,d_effect
+			,d_goalMoney
+			,d_totalMoney
+			,d_targetWallet
+			,d_term
+			,d_images
+		)values(
+			#{d_num}
+			,#{userid}
+			,#{d_name}
+			,#{d_content}
+			,#{d_introduce}
+			,#{d_plan}
+			,#{d_target}
+			,#{d_effect}
+			,#{d_goalMoney}
+			,#{d_totalMoney}
+			,#{d_targetWallet}
+			,#{d_term}
+			,#{d_images}
+		)
+	</insert>
+	
+	<select id="selectPost" parameterType="int" resultType="DonationVO">
+		select * from table_donation where d_num = #{d_num}
+	</select>
+	
+	<insert id="insertComment" parameterType="D_commVO">
+		insert into table_d_comm(
+			d_num
+			,d_comm_text
+			,userid
+		)values(
+			#{d_num}
+			,#{d_comm_text}
+			,#{userid}
+		)
+	</insert>
+	
+	<select id="selectComment" parameterType="int" resultType="D_commVO">
+		select * from table_d_comm where d_num = #{d_num}
+	</select>
+</mapper>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 회원정보 처리 SQL -->
+<mapper namespace="kr.block.codingdora.mapper.UserMapper">
+	<insert id="insertUser" parameterType="UserVO">
+		insert into table_user(
+			userid
+			,userpw
+			,username
+			,useremail
+		)values(
+			#{userid}
+			,#{userpw}
+			,#{username}
+			,#{useremail}
+		)
+	</insert>
+
+	<select id="selectUser" parameterType="String" resultType="UserVO">
+		select * from table_User where userid = #{userid}
+	</select>
+	
+	<!-- <update id="updateUsers" parameterType="Users">
+		update Users
+			set
+		id=#{id},
+		pw=#{pw},
+		phone=#{phone}
+			where
+		id=#{id}	
+	</update> -->
+	
+	<update id="permitUser" parameterType="UserVO">
+		update table_user
+			set
+		userpermit = "Y"
+			where
+		userid = #{userid}
+	</update>
+
+	
+	
+</mapper>
